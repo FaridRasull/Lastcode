@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="user">
+      <img src="icons/avatar.png">
+      <h3>Farid Rasul</h3>
+      <button class="logout">LOG OUT</button>
+    </div>
+
+    <nav class="menu">
+      <a class="menu-item active" data-page="home">
+        <img src="icons/material-symbols_home-rounded.svg">
+        <span>Home</span>
+      </a>
+
+      <a class="menu-item" data-page="categories">
+        <img src="icons/Book_Open.svg">
+        <span>Categories</span>
+      </a>
+
+      <a class="menu-item" data-page="saved">
+        <img src="icons/Bookmark.svg">
+        <span>Saved</span>
+      </a>
+
+      <a class="menu-item" data-page="reviews">
+        <img src="icons/Star.svg">
+        <span>Reviews</span>
+      </a>
+
+      <a class="menu-item" data-page="settings">
+        <img src="icons/Settings.svg">
+        <span>Settings</span>
+      </a>
+
+      <a class="menu-item" data-page="profile">
+        <img src="icons/User_02.svg">
+        <span>Profile</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HOME -->
+    <section id="homePage">
+
+      <!-- HERO -->
+      <section class="hero">
+        <h1>Find your next book to read.</h1>
+
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input id="searchInput" placeholder="Search by title, author, or keyword">
+        </div>
+      </section>
+
+      <!-- POPULAR -->
+      <section class="content-section">
+        <div class="section-header">
+          <h2>Popular</h2>
+          <div class="slider-arrows">
+            <button id="popPrev">‹</button>
+            <button id="popNext">›</button>
+          </div>
+        </div>
+
+        <div class="books-wrapper">
+          <div class="books" id="popularBooks"></div>
+        </div>
+      </section>
+
+      <!-- RECOMMEND -->
+      <section class="content-section">
+        <div class="section-header">
+          <h2>We Recommend</h2>
+          <div class="slider-arrows">
+            <button id="recPrev">‹</button>
+            <button id="recNext">›</button>
+          </div>
+        </div>
+
+        <div class="books-wrapper">
+          <div class="books" id="recommendBooks"></div>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- SAVED PAGE -->
+    <section class="content-section" id="savedPage" style="display:none;">
+      <div class="section-header">
+        <h2>Saved Books</h2>
+      </div>
+
+      <div class="books-wrapper">
+        <div class="books" id="savedBooks"></div>
+      </div>
+    </section>
+
+    <!-- REVIEWS PAGE -->
+<section class="content-section" id="reviewsPage" style="display:none;">
+
+  <div class="section-header">
+    <h2>Reviews</h2>
+  </div>
+
+  <div class="reviews-list" id="reviewsList">
+    <!-- saved kitablara görə review kartlar -->
+  </div>
+
+</section>
+<!-- SETTINGS PAGE -->
+<section class="content-section" id="settingsPage" style="display:none;">
+
+  <div class="section-header">
+    <h2>Settings</h2>
+  </div>
+
+  <!-- THEME -->
+  <div class="settings-group">
+    <h4>Appearance</h4>
+
+    <label class="setting-item">
+      <span>Dark Mode</span>
+      <input type="checkbox" id="darkModeToggle">
+    </label>
+  </div>
+
+  <!-- PREFERENCES -->
+  <div class="settings-group">
+    <h4>Preferences</h4>
+
+    <label class="setting-item">
+      <span>Show ratings</span>
+      <input type="checkbox" id="showRatingsToggle">
+    </label>
+
+    <div class="setting-item">
+      <span>Default page</span>
+      <select id="defaultPageSelect">
+        <option value="home">Home</option>
+        <option value="categories">Categories</option>
+        <option value="saved">Saved</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- ACCOUNT -->
+  <div class="settings-group">
+    <h4>Account</h4>
+
+    <div class="setting-item">
+      <span>Username</span>
+      <input type="text" id="usernameInput" placeholder="Farid Rasul">
+    </div>
+
+    <button class="danger-btn" id="clearDataBtn">
+      Clear all saved data
+    </button>
+  </div>
+
+</section>
+<section class="content-section" id="profilePage" style="display:none;">
+  <div class="profile-card">
+    <div class="profile-header">
+      <img src="icons/avatar.png" class="profile-avatar">
+      <div>
+        <h2>Farid Rasul</h2>
+        <p>Book Lover · Lifelong Learner</p>
+      </div>
+    </div>
+
+    <div class="profile-stats">
+      <div>
+        <h3 id="statSaved">0</h3>
+        <span>Saved Books</span>
+      </div>
+      <div>
+        <h3 id="statReviews">0</h3>
+        <span>Reviews</span>
+      </div>
+      <div>
+        <h3>24</h3>
+        <span>Days Active</span>
+      </div>
+    </div>
+
+    <div class="profile-about">
+      <h4>About me</h4>
+      <p>
+        I enjoy discovering new books, saving meaningful reads and sharing thoughts with the community.
+      </p>
+    </div>
+
+    <div class="profile-actions">
+      <button>Edit Profile</button>
+      <button class="secondary">Log out</button>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- CATEGORIES PAGE -->
+<section class="content-section" id="categoriesPage" style="display:none;">
+
+  <div class="section-header">
+    <h2>Categories</h2>
+  </div>
+
+  <div class="categories-grid" id="categoriesGrid">
+    <div class="category-card" data-category="fiction">Fiction</div>
+    <div class="category-card" data-category="self help">Self-Help</div>
+    <div class="category-card" data-category="business">Business</div>
+    <div class="category-card" data-category="technology">Technology</div>
+    <div class="category-card" data-category="psychology">Psychology</div>
+    <div class="category-card" data-category="history">History</div>
+    <div class="category-card" data-category="science">Science</div>
+    <div class="category-card" data-category="romance">Romance</div>
+  </div>
+
+  <!-- CATEGORY RESULTS -->
+  <div class="books-wrapper" style="margin-top:40px;">
+    <div class="books" id="categoryBooks"></div>
+  </div>
+
+</section>
+
+
+  </main>
+
+</div>
+<!-- OVERLAY -->
+<div id="overlay"></div>
+
+<!-- BOOK DETAILS SIDE PANEL -->
+<section id="bookPanel">
+  <button id="closePanel">×</button>
+
+  <div class="panel-content">
+    <img id="panelCover" />
+    <h2 id="panelTitle"></h2>
+    <p id="panelAuthor"></p>
+
+    <div class="panel-rating" id="panelRating"></div>
+
+    <h4>About this book</h4>
+    <p id="panelDescription"></p>
+
+    <a id="panelReadLink" target="_blank" class="read-btn">
+      Read Preview
+    </a>
+
+    <h4>Community Reviews</h4>
+    <div id="panelReviews"></div>
+  </div>
+</section>
+
+
+<script src="script.js"></script>
+</body>
+</html>
